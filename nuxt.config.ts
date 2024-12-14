@@ -2,13 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
   devtools: { enabled: true },
-  modules: [
-    "@nuxtjs/tailwindcss",
-    "@nuxtjs/i18n",
-    "@nuxtjs/color-mode",
-    "@nuxtjs/google-fonts",
-    "@pinia/nuxt",
-  ],
+  modules: ["@nuxtjs/tailwindcss", "@nuxtjs/i18n", "@nuxtjs/color-mode", "@nuxtjs/google-fonts", "@pinia/nuxt", "@vueuse/nuxt"],
   i18n: {
     strategy: "no_prefix",
     locales: ["pl"],

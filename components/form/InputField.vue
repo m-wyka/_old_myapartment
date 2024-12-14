@@ -2,8 +2,8 @@
 import type { InputTypeHTMLAttribute } from "vue";
 
 defineProps<{
-  id: string;
-  label: string;
+  id?: string;
+  label?: string;
   type?: InputTypeHTMLAttribute;
   name?: string;
   error?: string;
@@ -16,6 +16,7 @@ const model = defineModel();
 <template>
   <div>
     <label
+      v-if="label"
       :for="id"
       class="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
     >
@@ -40,7 +41,6 @@ const model = defineModel();
 <style>
 .input-field {
   &:read-only {
-    opacity: 0.6;
     pointer-events: none;
   }
 }

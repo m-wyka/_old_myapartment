@@ -17,7 +17,7 @@ const menu = ref([
     <li v-for="item in menu" :key="item.id">
       <NuxtLink
         :to="item.to"
-        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 group"
+        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-300 dark:hover:bg-gray-800 group"
       >
         {{ item.name }}
       </NuxtLink>

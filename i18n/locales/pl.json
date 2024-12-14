@@ -5,10 +5,22 @@
       "floorManagement": "Zarządzanie piętrami",
       "apartmentManagement": "Zarządzanie mieszkaniami",
       "filesManagement": "Zarządzanie plikami"
+    },
+    "buildingManagement": {
+      "form": {
+        "basicInformation": "Informacje podstawowe",
+        "technicalInformation": "Informacje techniczne",
+        "name": "Nazwa budynku",
+        "address": "Adres",
+        "yearOfConstruction": "Rok budowy",
+        "numberOfFloors": "Liczba pięter",
+        "buildingType": "Typ budynku"
+      }
     }
   },
   "form": {
     "signIn": "Zaloguj",
+    "save": "Zapisz",
     "fields": {
       "email": "Adres e-mail",
       "password": "Hasło"

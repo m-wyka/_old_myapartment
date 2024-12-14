@@ -33,7 +33,7 @@ import SidebarMenu from "./SidebarMenu.vue";
     aria-label="Sidebar"
   >
     <div
-      class="flex flex-col justify-between h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800 border-r border-gray-700"
+      class="flex flex-col justify-between h-full px-3 py-4 overflow-y-auto bg-gray-100 dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700"
     >
       <div>
         <Logo />
@@ -44,7 +44,7 @@ import SidebarMenu from "./SidebarMenu.vue";
         <li>
           <NuxtLink
             to="/"
-            class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+            class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700 group"
           >
             Wyloguj się
           </NuxtLink>

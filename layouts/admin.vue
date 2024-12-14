@@ -1,9 +1,5 @@
 <script lang="ts" setup>
 import Sidebar from "~/components/admin/sidebar/Sidebar.vue";
-
-definePageMeta({
-  middleware: "admin-layout",
-});
 </script>
 
 <template>
