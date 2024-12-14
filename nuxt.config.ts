@@ -2,7 +2,13 @@
 export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
   devtools: { enabled: true },
-  modules: ["@nuxtjs/tailwindcss", "@nuxtjs/i18n"],
+  modules: [
+    "@nuxtjs/tailwindcss",
+    "@nuxtjs/i18n",
+    "@nuxtjs/color-mode",
+    "@nuxtjs/google-fonts",
+    "@pinia/nuxt",
+  ],
   i18n: {
     strategy: "no_prefix",
     locales: ["pl"],
@@ -27,6 +33,14 @@ export default defineNuxtConfig({
           api: "modern", // For remove warning: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
         },
       },
+    },
+  },
+  colorMode: {
+    classSuffix: "",
+  },
+  googleFonts: {
+    families: {
+      Roboto: [100, 200, 300, 400, 500, 600, 700, 800, 900],
     },
   },
 });
