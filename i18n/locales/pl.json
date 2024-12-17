@@ -25,7 +25,11 @@
         "utilitiesAvailable": "Media dostępne w budynku",
         "heatingSystem": "System ogrzewania",
         "buildingOwner": "Właściciel budynku",
+        "buildingOwnerEmail": "Adres e-mail właściciela",
+        "buildingOwnerPhone": "Numer telefonu właściciela",
         "buildingAdministrator": "Administrator budynku",
+        "buildingAdministratorEmail": "Adres e-mail właściciela",
+        "buildingAdministratorPhone": "Numer telefonu właściciela",
         "contactDetails": "Dane kontaktowe",
         "parkingAvailability": "Dostępność parkingów",
         "recreationArea": "Strefa rekreacyjna",
@@ -51,6 +55,7 @@
     "validation": {
       "required": "To pole jest wymagane",
       "email": "Adres e-mail jest nieprawidłowy",
+      "phone": "Numer telefonu jest nieprawidłowy",
       "min": "Minimalna ilość znaków to: {value}",
       "max": "Maksymalna ilość znaków to: {value}"
     }

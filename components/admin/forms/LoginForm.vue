@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import InputField from "~/components/form/InputField.vue";
+import VInputField from "~/components/form/VInputField.vue";
 
 const loading = ref(false);
 const email = ref("");
@@ -13,7 +13,7 @@ const submit = () => {
 <template>
   <form @submit.prevent="submit">
     <div class="grid gap-4 mb-6">
-      <InputField
+      <VInputField
         v-model="email"
         type="email"
         id="email"
@@ -21,7 +21,7 @@ const submit = () => {
         :label="$t('form.fields.email')"
       />
 
-      <InputField
+      <VInputField
         v-model="password"
         type="password"
         id="password"

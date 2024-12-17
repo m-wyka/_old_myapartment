@@ -2,9 +2,9 @@
 import { object, string, number } from "yup";
 import { useForm } from "vee-validate";
 import Btn from "~/components/Btn.vue";
-import InputField from "~/components/form/InputField.vue";
-import SelectField from "~/components/form/SelectField.vue";
-import Datepicker from "~/components/form/Datepicker.vue";
+import InputField from "~/components/form/VInputField.vue";
+import SelectField from "~/components/form/VSelectField.vue";
+import Datepicker from "~/components/form/VDatepicker.vue";
 
 const { handleSubmit } = useForm({
   validationSchema: object({

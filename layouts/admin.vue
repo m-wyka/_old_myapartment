@@ -3,13 +3,15 @@ import Sidebar from "~/components/admin/sidebar/Sidebar.vue";
 </script>
 
 <template>
-  <Sidebar />
+  <div>
+    <Sidebar />
 
-  <main class="wrapper flex h-screen">
-    <div class="flex-1 p-4">
-      <slot />
-    </div>
-  </main>
+    <main class="wrapper flex">
+      <div class="flex-1 p-4">
+        <slot />
+      </div>
+    </main>
+  </div>
 </template>
 
 <style scoped>

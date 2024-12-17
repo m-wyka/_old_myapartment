@@ -4,9 +4,9 @@ import { onClickOutside, useWindowSize } from "@vueuse/core";
 import { XCircleIcon } from "@heroicons/vue/24/solid";
 import type { InputTypeHTMLAttribute } from "vue";
 import type {
-  SelectDropdownDirections,
-  SelectField,
-} from "~/types/form/selectField";
+  VSelectDropdownDirections,
+  VSelectField,
+} from "~/types/form/vSelectField";
 
 const props = defineProps<{
   options: any[];
@@ -21,12 +21,12 @@ const props = defineProps<{
 const selectElement = ref<HTMLDivElement | null>(null);
 const selectMenuToggle = ref(false);
 const selectDropdownMenu = ref<HTMLDivElement | null>(null);
-const selectDropdownDirection = ref<SelectDropdownDirections>("down");
+const selectDropdownDirection = ref<VSelectDropdownDirections>("down");
 const {
   value: selectValue,
   errorMessage,
   validate,
-} = useField<SelectField | null>(() => props.name ?? "");
+} = useField<VSelectField | null>(() => props.name ?? "");
 
 const { height: windowHeight } = useWindowSize();
 
@@ -115,7 +115,7 @@ watch(selectDropdownMenu, () => {
     <div
       v-if="selectMenuToggle"
       ref="selectDropdownMenu"
-      class="dropdown w-full absolute mt-[2px] z-10 bg-white divide-y divide-gray-100 rounded shadow-lg dark:bg-gray-700 border dark:border-gray-600"
+      class="dropdown w-full absolute mt-[2px] z-10 bg-white divide-y divide-gray-100 rounded dark:bg-gray-700 border dark:border-gray-600"
       :class="selectDropdownDirection"
     >
       <ul class="py-2 text-sm text-gray-700 dark:text-gray-200">
@@ -139,10 +139,12 @@ watch(selectDropdownMenu, () => {
 .dropdown.up {
   bottom: 100%;
   transform: translateY(22px);
+  box-shadow: 0 -4px 16px -2px rgba(0, 0, 0, 0.3);
 }
 
 .dropdown.down {
   top: 100%;
   transform: translateY(0);
+  box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.3);
 }
 </style>

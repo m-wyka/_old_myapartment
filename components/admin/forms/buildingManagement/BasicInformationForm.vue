@@ -2,9 +2,9 @@
 import { object, string, number } from "yup";
 import { useForm } from "vee-validate";
 import Btn from "~/components/Btn.vue";
-import InputField from "~/components/form/InputField.vue";
-import SelectField from "~/components/form/SelectField.vue";
-import Datepicker from "~/components/form/Datepicker.vue";
+import VInputField from "~/components/form/VInputField.vue";
+import VSelectField from "~/components/form/VSelectField.vue";
+import VDatepicker from "~/components/form/VDatepicker.vue";
 
 const { handleSubmit } = useForm({
   validationSchema: object({
@@ -37,29 +37,29 @@ const options = ref([
     </h2>
 
     <div class="grid gap-4 mb-8 md:grid-cols-2">
-      <InputField
+      <VInputField
         name="name"
         :label="$t('admin.buildingManagement.form.name')"
       />
 
-      <InputField
+      <VInputField
         name="address"
         :label="$t('admin.buildingManagement.form.address')"
       />
 
-      <Datepicker
+      <VDatepicker
         year-picker
         name="yearOfConstruction"
         :label="$t('admin.buildingManagement.form.yearOfConstruction')"
       />
 
-      <InputField
+      <VInputField
         type="number"
         name="numberOfFloors"
         :label="$t('admin.buildingManagement.form.numberOfFloors')"
       />
 
-      <SelectField
+      <VSelectField
         :options="options"
         name="buildingType"
         :label="$t('admin.buildingManagement.form.buildingType')"

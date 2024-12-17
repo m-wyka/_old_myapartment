@@ -2,8 +2,8 @@
 import { object, number } from "yup";
 import { useForm } from "vee-validate";
 import Btn from "~/components/Btn.vue";
-import InputField from "~/components/form/InputField.vue";
-import SelectField from "~/components/form/SelectField.vue";
+import VInputField from "~/components/form/VInputField.vue";
+import VSelectField from "~/components/form/VSelectField.vue";
 
 const { handleSubmit } = useForm({
   validationSchema: object({
@@ -46,31 +46,31 @@ const heatingSystemOptions = ref([
     </h2>
 
     <div class="grid gap-4 mb-8 md:grid-cols-2">
-      <InputField
+      <VInputField
         type="number"
         name="surface"
         :label="$t('admin.buildingManagement.form.surface')"
       />
 
-      <InputField
+      <VInputField
         type="number"
         name="numberOfApartments"
         :label="$t('admin.buildingManagement.form.numberOfApartments')"
       />
 
-      <InputField
+      <VInputField
         type="number"
         name="numberOfElevators"
         :label="$t('admin.buildingManagement.form.numberOfElevators')"
       />
 
-      <SelectField
+      <VSelectField
         :options="utilitiesAvailableOptions"
         name="utilitiesAvailable"
         :label="$t('admin.buildingManagement.form.utilitiesAvailable')"
       />
 
-      <SelectField
+      <VSelectField
         :options="heatingSystemOptions"
         name="heatingSystem"
         :label="$t('admin.buildingManagement.form.heatingSystem')"

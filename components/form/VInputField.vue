@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { useField } from "vee-validate";
 import type { InputTypeHTMLAttribute } from "vue";
-import type { InputField } from "~/types/form/inputField";
+import type { VInputField } from "~/types/form/vInputField";
 
 const props = defineProps<{
   id?: string;
@@ -12,7 +12,7 @@ const props = defineProps<{
   readonly?: boolean;
 }>();
 
-const { value, errorMessage } = useField<InputField | null>(
+const { value, errorMessage } = useField<VInputField | null>(
   () => props.name ?? ""
 );
 </script>

@@ -2,9 +2,8 @@
 import { object, string, number } from "yup";
 import { useForm } from "vee-validate";
 import Btn from "~/components/Btn.vue";
-import InputField from "~/components/form/InputField.vue";
-import SelectField from "~/components/form/SelectField.vue";
-import Datepicker from "~/components/form/Datepicker.vue";
+import VInputField from "~/components/form/VInputField.vue";
+import VSelectField from "~/components/form/VSelectField.vue";
 
 const { handleSubmit } = useForm({
   validationSchema: object({
@@ -33,17 +32,17 @@ const options = ref([
     </h2>
 
     <div class="grid gap-4 mb-8 md:grid-cols-2">
-      <InputField
+      <VInputField
         name="parkingAvailability"
         :label="$t('admin.buildingManagement.form.parkingAvailability')"
       />
 
-      <InputField
+      <VInputField
         name="recreationArea"
         :label="$t('admin.buildingManagement.form.recreationArea')"
       />
 
-      <SelectField
+      <VSelectField
         :options="options"
         name="accessibilityForPeopleWithDisabilities"
         :label="

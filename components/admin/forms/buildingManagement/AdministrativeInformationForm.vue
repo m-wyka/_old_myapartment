@@ -1,17 +1,25 @@
 <script lang="ts" setup>
 import { object, string } from "yup";
 import { useForm } from "vee-validate";
+import { phoneRegex } from "~/constants/regex";
 import Btn from "~/components/Btn.vue";
-import InputField from "~/components/form/InputField.vue";
+import VInputField from "~/components/form/VInputField.vue";
 
+const { t } = useI18n();
 const { handleSubmit } = useForm({
   validationSchema: object({
     buildingOwner: string().required().min(3).max(255),
-    buildingOwnerEmail: string().required().min(3).max(255),
-    buildingOwnerPhone: string().required().min(3).max(255),
+    buildingOwnerEmail: string().email(),
+    buildingOwnerPhone: string().matches(
+      phoneRegex,
+      t("form.validation.phone")
+    ),
     buildingAdministrator: string().required().min(3).max(255),
-    buildingAdministratorEmail: string().required().min(3).max(255),
-    buildingAdministratorPhone: string().required().min(3).max(255),
+    buildingAdministratorEmail: string().email(),
+    buildingAdministratorPhone: string().matches(
+      phoneRegex,
+      t("form.validation.phone")
+    ),
   }),
 });
 
@@ -28,36 +36,44 @@ const onSubmit = handleSubmit(async (values) => {
 
     <div class="grid gap-4 mb-8 md:grid-cols-2">
       <div class="grid gap-4">
-        <InputField
+        <VInputField
           name="buildingOwner"
           :label="$t('admin.buildingManagement.form.buildingOwner')"
         />
 
-        <InputField
+        <VInputField
+          type="email"
           name="buildingOwnerEmail"
-          :label="$t('form.fields.email')"
+          :label="$t('admin.buildingManagement.form.buildingOwnerEmail')"
         />
 
-        <InputField
+        <VInputField
+          type="tel"
           name="buildingOwnerPhone"
-          :label="$t('form.fields.phone')"
+          :label="$t('admin.buildingManagement.form.buildingOwnerPhone')"
         />
       </div>
 
       <div class="grid gap-4">
-        <InputField
+        <VInputField
           name="buildingAdministrator"
           :label="$t('admin.buildingManagement.form.buildingAdministrator')"
         />
 
-        <InputField
+        <VInputField
+          type="email"
           name="buildingAdministratorEmail"
-          :label="$t('form.fields.email')"
+          :label="
+            $t('admin.buildingManagement.form.buildingAdministratorEmail')
+          "
         />
 
-        <InputField
+        <VInputField
+          type="tel"
           name="buildingAdministratorPhone"
-          :label="$t('form.fields.phone')"
+          :label="
+            $t('admin.buildingManagement.form.buildingAdministratorPhone')
+          "
         />
       </div>
     </div>
