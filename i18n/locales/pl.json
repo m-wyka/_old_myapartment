@@ -10,21 +10,49 @@
       "form": {
         "basicInformation": "Informacje podstawowe",
         "technicalInformation": "Informacje techniczne",
+        "administrativeInformation": "Informacje administracyjne",
+        "usageInformation": "Informacje użytkowe",
+        "documentationAndFiles": "Dokumentacja i pliki",
+        "additionalInformation": "Informacje dodatkowe",
         "name": "Nazwa budynku",
         "address": "Adres",
         "yearOfConstruction": "Rok budowy",
         "numberOfFloors": "Liczba pięter",
-        "buildingType": "Typ budynku"
+        "buildingType": "Typ budynku",
+        "surface": "Powierzchnia całkowita",
+        "numberOfApartments": "Liczba mieszkań",
+        "numberOfElevators": "Liczba wind",
+        "utilitiesAvailable": "Media dostępne w budynku",
+        "heatingSystem": "System ogrzewania",
+        "buildingOwner": "Właściciel budynku",
+        "buildingAdministrator": "Administrator budynku",
+        "contactDetails": "Dane kontaktowe",
+        "parkingAvailability": "Dostępność parkingów",
+        "recreationArea": "Strefa rekreacyjna",
+        "accessibilityForPeopleWithDisabilities": "Dostępność dla osób niepełnosprawnych",
+        "buildingPlans": "Plany budynku",
+        "regulationsOfTheHousingCommunity": "Regulamin wspólnoty mieszkaniowej",
+        "photosOfTheBuilding": "Zdjęcia budynku",
+        "buildingHistory": "Historia budynku",
+        "energyCertificates": "Certyfikaty energetyczne",
+        "monitoringAndSecurity": "Monitoring i bezpieczeństw"
       }
     }
   },
   "form": {
     "signIn": "Zaloguj",
     "save": "Zapisz",
+    "cancel": "Anuluj",
     "fields": {
       "email": "Adres e-mail",
-      "password": "Hasło"
+      "password": "Hasło",
+      "phone": "Numer telefonu"
     },
-    "validation": {}
+    "validation": {
+      "required": "To pole jest wymagane",
+      "email": "Adres e-mail jest nieprawidłowy",
+      "min": "Minimalna ilość znaków to: {value}",
+      "max": "Maksymalna ilość znaków to: {value}"
+    }
   }
 }

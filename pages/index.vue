@@ -1,4 +1,6 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { ArrowUpRightIcon } from "@heroicons/vue/24/solid";
+</script>
 
 <template>
   <div>

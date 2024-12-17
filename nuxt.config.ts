@@ -2,7 +2,14 @@
 export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
   devtools: { enabled: true },
-  modules: ["@nuxtjs/tailwindcss", "@nuxtjs/i18n", "@nuxtjs/color-mode", "@nuxtjs/google-fonts", "@pinia/nuxt", "@vueuse/nuxt"],
+  modules: [
+    "@nuxtjs/tailwindcss",
+    "@nuxtjs/i18n",
+    "@nuxtjs/color-mode",
+    "@nuxtjs/google-fonts",
+    "@pinia/nuxt",
+    "@vueuse/nuxt",
+  ],
   i18n: {
     strategy: "no_prefix",
     locales: ["pl"],
@@ -25,6 +32,10 @@ export default defineNuxtConfig({
       preprocessorOptions: {
         scss: {
           api: "modern", // For remove warning: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+          additionalData: `
+            @use "@/assets/scss/_variables.scss" as *;
+            @use "@/assets/scss/components/index.scss" as *;
+          `,
         },
       },
     },

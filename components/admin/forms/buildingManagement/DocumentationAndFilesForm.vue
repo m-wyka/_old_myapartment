@@ -19,15 +19,6 @@ const { handleSubmit } = useForm({
 const onSubmit = handleSubmit(async (values) => {
   console.log(values);
 });
-
-const options = ref([
-  {
-    id: 1,
-    name: "Mieszkalny",
-    value: "lorem",
-  },
-  { id: 2, name: "Mieszkalno-usługowy", value: "Ipsum" },
-]);
 </script>
 
 <template>
@@ -36,35 +27,7 @@ const options = ref([
       {{ $t("admin.buildingManagement.form.basicInformation") }}
     </h2>
 
-    <div class="grid gap-4 mb-8 md:grid-cols-2">
-      <InputField
-        name="name"
-        :label="$t('admin.buildingManagement.form.name')"
-      />
-
-      <InputField
-        name="address"
-        :label="$t('admin.buildingManagement.form.address')"
-      />
-
-      <Datepicker
-        year-picker
-        name="yearOfConstruction"
-        :label="$t('admin.buildingManagement.form.yearOfConstruction')"
-      />
-
-      <InputField
-        type="number"
-        name="numberOfFloors"
-        :label="$t('admin.buildingManagement.form.numberOfFloors')"
-      />
-
-      <SelectField
-        :options="options"
-        name="buildingType"
-        :label="$t('admin.buildingManagement.form.buildingType')"
-      />
-    </div>
+    <div class="grid gap-4 mb-8 md:grid-cols-2">// Docs</div>
 
     <Btn type="submit">{{ $t("form.save") }}</Btn>
   </form>

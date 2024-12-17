@@ -1,12 +1,33 @@
 <script setup lang="ts">
-defineProps<{
-  loading?: boolean;
-}>();
+import type { Btn } from "~/types/btn";
+
+const props = defineProps<Btn>();
+
+const handleSize = computed(() => {
+  switch (props.size) {
+    case "x-small":
+      return "px-3 py-2 text-xs";
+    case "small":
+      return "px-3 py-2 text-sm";
+    case "large":
+      return "px-5 py-3 text-sm";
+    case "x-large":
+      return "px-6 py-3.5 text-base";
+    default:
+      return "px-5 py-2.5 text-sm";
+  }
+});
 </script>
 
 <template>
   <button
-    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+    class="btn w-full sm:w-auto rounded font-medium text-center select-none"
+    :class="[
+      handleSize,
+      variant ? `btn__variant--${variant}` : 'btn__variant--default',
+      color ? `btn__color--${color}` : 'btn__color--default',
+    ]"
+    :type="type ?? 'button'"
   >
     <svg
       v-if="loading"
@@ -33,5 +54,3 @@ defineProps<{
     <slot />
   </button>
 </template>
-
-<style></style>
