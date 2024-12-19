@@ -13,5 +13,9 @@ export default defineNuxtPlugin(async (nuxtApp) => {
       min: ({ min }) => t("form.validation.min", { value: min }),
       max: ({ max }) => t("form.validation.max", { value: max }),
     },
+    number: {
+      min: ({ min }) => t("form.validation.min", { value: min }),
+      max: ({ max }) => t("form.validation.max", { value: max }),
+    },
   });
 });

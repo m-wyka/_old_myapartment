@@ -1,15 +1,17 @@
 <script lang="ts" setup>
-import { object, number } from "yup";
+import { object, string } from "yup";
 import { useForm } from "vee-validate";
 import Btn from "~/components/Btn.vue";
-import VInputField from "~/components/form/VInputField.vue";
 import VSelectField from "~/components/form/VSelectField.vue";
+import VTextarea from "~/components/form/VTextarea.vue";
+
+const { arrayRequiredSchema } = validationSchemas();
 
 const { handleSubmit } = useForm({
   validationSchema: object({
-    buildingHistory: number().required(),
-    utilitiesAvailable: object().shape({ id: number().required() }).required(),
-    heatingSystem: object().shape({ id: number().required() }).required(),
+    buildingHistory: string(),
+    utilitiesAvailable: arrayRequiredSchema,
+    heatingSystem: arrayRequiredSchema,
   }),
 });
 
@@ -40,9 +42,10 @@ const monitoringAndSecurityOptions = ref([
     </h2>
 
     <div class="grid gap-4 mb-8 md:grid-cols-2">
-      <VInputField
+      <VTextarea
         name="buildingHistory"
         :label="$t('admin.buildingManagement.form.buildingHistory')"
+        class="col-span-2"
       />
 
       <VSelectField

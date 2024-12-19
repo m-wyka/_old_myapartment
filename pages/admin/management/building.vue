@@ -18,15 +18,25 @@ definePageMeta({
     <template #content>
       <div class="building-management-wrapper">
         <BasicInformationForm />
-        <div class="border-t lg:border-l border-gray-700"></div>
+        <div
+          class="border-t lg:border-l border-gray-300 dark:border-gray-700"
+        ></div>
         <TechnicalInformationForm />
-        <div class="border-t lg:border-l border-gray-700 lg:hidden"></div>
+        <div
+          class="border-t lg:border-l border-gray-300 dark:border-gray-700 lg:hidden"
+        ></div>
         <AdministrativeInformationForm />
-        <div class="border-t lg:border-l border-gray-700"></div>
+        <div
+          class="border-t lg:border-l border-gray-300 dark:border-gray-700"
+        ></div>
         <UsageInformationForm />
-        <div class="border-t lg:border-l border-gray-700 lg:hidden"></div>
+        <div
+          class="border-t lg:border-l border-gray-300 dark:border-gray-700 lg:hidden"
+        ></div>
         <DocumentationAndFilesForm />
-        <div class="border-t lg:border-l border-gray-700"></div>
+        <div
+          class="border-t lg:border-l border-gray-300 dark:border-gray-700"
+        ></div>
         <AdditionalInformationForm />
       </div>
     </template>

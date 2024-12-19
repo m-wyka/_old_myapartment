@@ -10,6 +10,8 @@ const props = defineProps<{
   error?: string;
   name: string;
   yearPicker?: boolean;
+  maxDate?: Date;
+  preventMinMaxNavigation?: boolean;
 }>();
 
 const datepicker = ref<DatePickerInstance | null>(null);
@@ -53,6 +55,7 @@ const handleSaveClick = () => {
       :offset="2"
       hide-input-icon
       position="left"
+      :max-date="maxDate"
     >
       <template #action-buttons>
         <div class="flex gap-2">
@@ -81,20 +84,6 @@ const handleSaveClick = () => {
 </style>
 
 <style scoped lang="scss">
-:deep(.dp__input) {
-  @apply text-sm;
-
-  transition: none;
-
-  &.dp__input_focus {
-    @apply ring-1 ring-blue-500;
-  }
-}
-
-:deep(.dp__arrow_top) {
-  display: none;
-}
-
 :deep(.dp__theme_dark) {
   --dp-background-color: theme("colors.gray.700");
   --dp-text-color: theme("colors.white");
@@ -124,5 +113,23 @@ const handleSaveClick = () => {
   --dp-range-between-dates-text-color: var(--dp-hover-text-color, #fff);
   --dp-range-between-border-color: var(--dp-hover-color, #fff);
   --dp-overlay-col-padding: 0.25rem;
+}
+
+:deep(.dp__input) {
+  @apply text-sm;
+
+  transition: none;
+
+  &.dp__input_focus {
+    @apply ring-1 ring-blue-500;
+  }
+}
+
+:deep(.dp__arrow_top) {
+  display: none;
+}
+
+:deep(.dp--menu-wrapper) {
+  box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.3);
 }
 </style>

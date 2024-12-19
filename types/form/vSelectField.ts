@@ -1,6 +1,6 @@
 export type VSelectDropdownDirections = "up" | "down";
 
-export interface VSelectField {
+export interface VSelectFieldData {
   id: number;
   name: string;
   value: string | number;

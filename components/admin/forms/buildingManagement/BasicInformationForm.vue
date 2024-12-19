@@ -6,13 +6,20 @@ import VInputField from "~/components/form/VInputField.vue";
 import VSelectField from "~/components/form/VSelectField.vue";
 import VDatepicker from "~/components/form/VDatepicker.vue";
 
+const {
+  basicStringSchema,
+  numberRequired,
+  numberRequiredNullableSchema,
+  arrayRequiredSchema,
+} = validationSchemas();
+
 const { handleSubmit } = useForm({
   validationSchema: object({
-    name: string().required().min(3).max(255),
-    address: string().required().min(3).max(255),
-    yearOfConstruction: number().required(),
-    numberOfFloors: number().required(),
-    buildingType: object().shape({ id: number().required() }).required(),
+    name: basicStringSchema,
+    address: basicStringSchema,
+    yearOfConstruction: numberRequired,
+    numberOfFloors: numberRequiredNullableSchema,
+    buildingType: arrayRequiredSchema,
   }),
 });
 
@@ -20,6 +27,7 @@ const onSubmit = handleSubmit(async (values) => {
   console.log(values);
 });
 
+const yearOfConstructionMaxDate = ref(new Date());
 const options = ref([
   {
     id: 1,
@@ -45,12 +53,14 @@ const options = ref([
       <VInputField
         name="address"
         :label="$t('admin.buildingManagement.form.address')"
+        :placeholder="$t('admin.buildingManagement.form.addressPlaceholder')"
       />
 
       <VDatepicker
         year-picker
         name="yearOfConstruction"
         :label="$t('admin.buildingManagement.form.yearOfConstruction')"
+        :max-date="yearOfConstructionMaxDate"
       />
 
       <VInputField

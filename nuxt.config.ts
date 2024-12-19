@@ -28,6 +28,9 @@ export default defineNuxtConfig({
   },
   css: ["~/assets/scss/main.scss"],
   vite: {
+    optimizeDeps: {
+      exclude: ["vee-validate"],
+    },
     css: {
       preprocessorOptions: {
         scss: {

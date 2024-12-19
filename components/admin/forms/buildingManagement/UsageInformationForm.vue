@@ -1,17 +1,49 @@
 <script lang="ts" setup>
-import { object, string, number } from "yup";
+import { object } from "yup";
 import { useForm } from "vee-validate";
+import { ParkingAvailabilityValues } from "~/enums/admin";
+import type { VSelectFieldData } from "~/types/form/vSelectField";
 import Btn from "~/components/Btn.vue";
 import VInputField from "~/components/form/VInputField.vue";
 import VSelectField from "~/components/form/VSelectField.vue";
 
+const parkingAvailabilitySelected = ref<VSelectFieldData[]>([]);
+const parkingAvailabilityTab = ref<number | null>(null);
+const parkingAvailabilityOptions = ref([
+  {
+    id: 1,
+    name: "Podziemny",
+    value: ParkingAvailabilityValues.Underground,
+  },
+  {
+    id: 2,
+    name: "Zewnętrzny",
+    value: ParkingAvailabilityValues.Outside,
+  },
+  {
+    id: 3,
+    name: "Brak",
+    value: ParkingAvailabilityValues.None,
+  },
+]);
+
+const options = ref([
+  { id: 1, name: "Tak", value: true },
+  { id: 2, name: "Nie", value: false },
+]);
+
+const { basicStringSchema, arrayRequiredSchema, parkingFieldSchema } =
+  validationSchemas();
+
 const { handleSubmit } = useForm({
   validationSchema: object({
-    parkingAvailability: string().required().min(3).max(255),
-    recreationArea: string().required().min(3).max(255),
-    accessibilityForPeopleWithDisabilities: object()
-      .shape({ id: number().required() })
-      .required(),
+    parkingAvailability: arrayRequiredSchema,
+    recreationArea: basicStringSchema,
+    accessibilityForPeopleWithDisabilities: arrayRequiredSchema,
+    numberOfParkingLots_1: parkingFieldSchema("parkingAvailability", 1),
+    numberOfParkingSpaces_1: parkingFieldSchema("parkingAvailability", 1),
+    numberOfParkingLots_2: parkingFieldSchema("parkingAvailability", 2),
+    numberOfParkingSpaces_2: parkingFieldSchema("parkingAvailability", 2),
   }),
 });
 
@@ -19,10 +51,43 @@ const onSubmit = handleSubmit(async (values) => {
   console.log(values);
 });
 
-const options = ref([
-  { id: 1, name: "Tak", value: true },
-  { id: 2, name: "Nie", value: false },
-]);
+const handleParkingAvailabilityUpdate = (value: VSelectFieldData[] | null) => {
+  if (!value) {
+    parkingAvailabilitySelected.value = [];
+    return;
+  }
+
+  const findSomeNone = value.some(
+    (item) => item.value === ParkingAvailabilityValues.None
+  );
+
+  if (findSomeNone) {
+    parkingAvailabilitySelected.value = [];
+    return;
+  }
+
+  if (!value.length) {
+    parkingAvailabilitySelected.value = [];
+    return;
+  }
+
+  parkingAvailabilitySelected.value = value;
+  parkingAvailabilityTab.value = value[0].id;
+};
+
+const handleParkingAvailabilityTabSelect = (value: number) => {
+  if (!parkingAvailabilityTab.value) {
+    return;
+  }
+
+  parkingAvailabilityTab.value = value;
+};
+
+const handleParkingAvailabilityWthoutNone = computed(() =>
+  parkingAvailabilitySelected.value.filter(
+    (item) => item.value !== ParkingAvailabilityValues.None
+  )
+);
 </script>
 
 <template>
@@ -32,25 +97,96 @@ const options = ref([
     </h2>
 
     <div class="grid gap-4 mb-8 md:grid-cols-2">
-      <VInputField
-        name="parkingAvailability"
-        :label="$t('admin.buildingManagement.form.parkingAvailability')"
-      />
+      <div class="grid gap-4 content-start">
+        <VInputField
+          name="recreationArea"
+          :label="$t('admin.buildingManagement.form.recreationArea')"
+        />
 
-      <VInputField
-        name="recreationArea"
-        :label="$t('admin.buildingManagement.form.recreationArea')"
-      />
+        <VSelectField
+          name="accessibilityForPeopleWithDisabilities"
+          :options="options"
+          :label="
+            $t(
+              'admin.buildingManagement.form.accessibilityForPeopleWithDisabilities'
+            )
+          "
+        />
+      </div>
 
-      <VSelectField
-        :options="options"
-        name="accessibilityForPeopleWithDisabilities"
-        :label="
-          $t(
-            'admin.buildingManagement.form.accessibilityForPeopleWithDisabilities'
-          )
-        "
-      />
+      <div class="grid gap-4">
+        <VSelectField
+          name="parkingAvailability"
+          :options="parkingAvailabilityOptions"
+          :label="$t('admin.buildingManagement.form.parkingAvailability')"
+          multiple
+          @update="handleParkingAvailabilityUpdate"
+        />
+
+        <template
+          v-if="
+            parkingAvailabilitySelected.length &&
+            handleParkingAvailabilityWthoutNone.length
+          "
+        >
+          <ul
+            class="flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400"
+          >
+            <li
+              v-for="item in handleParkingAvailabilityWthoutNone"
+              :key="item.id"
+              class="me-2"
+            >
+              <button
+                class="inline-block p-4 text-blue-600 dark:hover:text-white rounded-t-lg dark:text-blue-500 hover:bg-gray-200 dark:hover:bg-blue-600"
+                :class="{
+                  'bg-gray-100 dark:text-white dark:bg-blue-500/30':
+                    parkingAvailabilityTab === item.id,
+                }"
+                @click.prevent.stop="
+                  handleParkingAvailabilityTabSelect(item.id)
+                "
+              >
+                {{ item.name }}
+              </button>
+            </li>
+          </ul>
+
+          <div
+            v-show="parkingAvailabilityTab === 1"
+            class="flex flex-col gap-4"
+          >
+            <VInputField
+              type="number"
+              name="numberOfParkingLots_1"
+              :label="$t('admin.buildingManagement.form.numberOfParkingLots')"
+            />
+
+            <VInputField
+              type="number"
+              name="numberOfParkingSpaces_1"
+              :label="$t('admin.buildingManagement.form.numberOfParkingSpaces')"
+            />
+          </div>
+
+          <div
+            v-show="parkingAvailabilityTab === 2"
+            class="flex flex-col gap-4"
+          >
+            <VInputField
+              type="number"
+              name="numberOfParkingLots_2"
+              :label="$t('admin.buildingManagement.form.numberOfParkingLots')"
+            />
+
+            <VInputField
+              type="number"
+              name="numberOfParkingSpaces_2"
+              :label="$t('admin.buildingManagement.form.numberOfParkingSpaces')"
+            />
+          </div>
+        </template>
+      </div>
     </div>
 
     <Btn type="submit">{{ $t("form.save") }}</Btn>

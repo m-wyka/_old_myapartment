@@ -1,17 +1,20 @@
 <script lang="ts" setup>
-import { object, number } from "yup";
+import { object } from "yup";
 import { useForm } from "vee-validate";
 import Btn from "~/components/Btn.vue";
 import VInputField from "~/components/form/VInputField.vue";
 import VSelectField from "~/components/form/VSelectField.vue";
 
+const { numberRequiredNullableSchema, arrayRequiredSchema } =
+  validationSchemas();
+
 const { handleSubmit } = useForm({
   validationSchema: object({
-    surface: number().required(),
-    numberOfApartments: number().required(),
-    numberOfElevators: number().required(),
-    utilitiesAvailable: object().shape({ id: number().required() }).required(),
-    heatingSystem: object().shape({ id: number().required() }).required(),
+    surface: numberRequiredNullableSchema,
+    numberOfApartments: numberRequiredNullableSchema,
+    numberOfElevators: numberRequiredNullableSchema,
+    heatingSystem: arrayRequiredSchema,
+    utilitiesAvailable: arrayRequiredSchema,
   }),
 });
 
@@ -65,15 +68,16 @@ const heatingSystemOptions = ref([
       />
 
       <VSelectField
-        :options="utilitiesAvailableOptions"
-        name="utilitiesAvailable"
-        :label="$t('admin.buildingManagement.form.utilitiesAvailable')"
-      />
-
-      <VSelectField
         :options="heatingSystemOptions"
         name="heatingSystem"
         :label="$t('admin.buildingManagement.form.heatingSystem')"
+      />
+
+      <VSelectField
+        :options="utilitiesAvailableOptions"
+        name="utilitiesAvailable"
+        :label="$t('admin.buildingManagement.form.utilitiesAvailable')"
+        multiple
       />
     </div>
 

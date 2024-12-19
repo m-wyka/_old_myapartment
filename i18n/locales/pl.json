@@ -16,10 +16,11 @@
         "additionalInformation": "Informacje dodatkowe",
         "name": "Nazwa budynku",
         "address": "Adres",
+        "addressPlaceholder": "np. plac Defilad 1, 00-901 Warszawa",
         "yearOfConstruction": "Rok budowy",
         "numberOfFloors": "Liczba pięter",
         "buildingType": "Typ budynku",
-        "surface": "Powierzchnia całkowita",
+        "surface": "Powierzchnia całkowita (m2)",
         "numberOfApartments": "Liczba mieszkań",
         "numberOfElevators": "Liczba wind",
         "utilitiesAvailable": "Media dostępne w budynku",
@@ -32,6 +33,8 @@
         "buildingAdministratorPhone": "Numer telefonu właściciela",
         "contactDetails": "Dane kontaktowe",
         "parkingAvailability": "Dostępność parkingów",
+        "numberOfParkingLots": "Liczba parkingów",
+        "numberOfParkingSpaces": "Liczba miejsc parkingowych",
         "recreationArea": "Strefa rekreacyjna",
         "accessibilityForPeopleWithDisabilities": "Dostępność dla osób niepełnosprawnych",
         "buildingPlans": "Plany budynku",
@@ -39,7 +42,7 @@
         "photosOfTheBuilding": "Zdjęcia budynku",
         "buildingHistory": "Historia budynku",
         "energyCertificates": "Certyfikaty energetyczne",
-        "monitoringAndSecurity": "Monitoring i bezpieczeństw"
+        "monitoringAndSecurity": "Monitoring i bezpieczeństwo"
       }
     }
   },

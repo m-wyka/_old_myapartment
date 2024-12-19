@@ -1,25 +1,19 @@
 <script lang="ts" setup>
-import { object, string } from "yup";
+import { object } from "yup";
 import { useForm } from "vee-validate";
-import { phoneRegex } from "~/constants/regex";
 import Btn from "~/components/Btn.vue";
 import VInputField from "~/components/form/VInputField.vue";
 
-const { t } = useI18n();
+const { basicStringSchema, emailSchema, phoneSchema } = validationSchemas();
+
 const { handleSubmit } = useForm({
   validationSchema: object({
-    buildingOwner: string().required().min(3).max(255),
-    buildingOwnerEmail: string().email(),
-    buildingOwnerPhone: string().matches(
-      phoneRegex,
-      t("form.validation.phone")
-    ),
-    buildingAdministrator: string().required().min(3).max(255),
-    buildingAdministratorEmail: string().email(),
-    buildingAdministratorPhone: string().matches(
-      phoneRegex,
-      t("form.validation.phone")
-    ),
+    buildingOwner: basicStringSchema,
+    buildingOwnerEmail: emailSchema,
+    buildingOwnerPhone: phoneSchema,
+    buildingAdministrator: basicStringSchema,
+    buildingAdministratorEmail: emailSchema,
+    buildingAdministratorPhone: phoneSchema,
   }),
 });
 
