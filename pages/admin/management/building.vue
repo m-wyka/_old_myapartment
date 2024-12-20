@@ -51,6 +51,12 @@ definePageMeta({
   column-gap: 2rem;
 }
 
+@media only screen and (max-width: theme("screens.xl")) {
+  .building-management-wrapper {
+    gap: 1rem;
+  }
+}
+
 @media only screen and (max-width: theme("screens.lg")) {
   .building-management-wrapper {
     grid-template-columns: 1fr;

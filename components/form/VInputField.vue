@@ -13,7 +13,7 @@ const props = defineProps<{
   readonly?: boolean;
 }>();
 
-const { value, errorMessage } = useField<VInputField | null>(
+const { value, errorMessage } = useField<VInputField | string>(
   () => props.name ?? ""
 );
 </script>

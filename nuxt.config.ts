@@ -9,6 +9,7 @@ export default defineNuxtConfig({
     "@nuxtjs/google-fonts",
     "@pinia/nuxt",
     "@vueuse/nuxt",
+    "@nuxt/icon",
   ],
   i18n: {
     strategy: "no_prefix",

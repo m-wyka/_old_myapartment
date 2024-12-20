@@ -1,4 +1,12 @@
 {
+  "misc": {
+    "yes": "Tak",
+    "no": "Nie",
+    "none": "Brak"
+  },
+  "auth": {
+    "signOut": "Wyloguj się"
+  },
   "admin": {
     "menu": {
       "buildingManagement": "Zarządzanie budynkiem",
@@ -33,6 +41,10 @@
         "buildingAdministratorPhone": "Numer telefonu właściciela",
         "contactDetails": "Dane kontaktowe",
         "parkingAvailability": "Dostępność parkingów",
+        "parkingAvailabilityData": {
+          "underground": "Podziemny",
+          "outside": "Zewnętrzny"
+        },
         "numberOfParkingLots": "Liczba parkingów",
         "numberOfParkingSpaces": "Liczba miejsc parkingowych",
         "recreationArea": "Strefa rekreacyjna",

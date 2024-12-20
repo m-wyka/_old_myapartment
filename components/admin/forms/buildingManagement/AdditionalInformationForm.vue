@@ -5,6 +5,7 @@ import Btn from "~/components/Btn.vue";
 import VSelectField from "~/components/form/VSelectField.vue";
 import VTextarea from "~/components/form/VTextarea.vue";
 
+const { t } = useI18n();
 const { arrayRequiredSchema } = validationSchemas();
 
 const { handleSubmit } = useForm({
@@ -30,8 +31,8 @@ const utilitiesAvailableOptions = ref([
 ]);
 
 const monitoringAndSecurityOptions = ref([
-  { id: 1, name: "Tak", value: true },
-  { id: 2, name: "Nie", value: false },
+  { id: 1, name: t("misc.yes"), value: true },
+  { id: 2, name: t("misc.no"), value: false },
 ]);
 </script>
 

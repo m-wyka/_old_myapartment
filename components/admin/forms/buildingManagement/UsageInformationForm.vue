@@ -7,29 +7,32 @@ import Btn from "~/components/Btn.vue";
 import VInputField from "~/components/form/VInputField.vue";
 import VSelectField from "~/components/form/VSelectField.vue";
 
+const { t } = useI18n();
 const parkingAvailabilitySelected = ref<VSelectFieldData[]>([]);
 const parkingAvailabilityTab = ref<number | null>(null);
 const parkingAvailabilityOptions = ref([
   {
     id: 1,
-    name: "Podziemny",
+    name: t(
+      "admin.buildingManagement.form.parkingAvailabilityData.underground"
+    ),
     value: ParkingAvailabilityValues.Underground,
   },
   {
     id: 2,
-    name: "Zewnętrzny",
+    name: t("admin.buildingManagement.form.parkingAvailabilityData.outside"),
     value: ParkingAvailabilityValues.Outside,
   },
   {
     id: 3,
-    name: "Brak",
+    name: t("misc.none"),
     value: ParkingAvailabilityValues.None,
   },
 ]);
 
 const options = ref([
-  { id: 1, name: "Tak", value: true },
-  { id: 2, name: "Nie", value: false },
+  { id: 1, name: t("misc.yes"), value: true },
+  { id: 2, name: t("misc.no"), value: false },
 ]);
 
 const { basicStringSchema, arrayRequiredSchema, parkingFieldSchema } =
@@ -138,9 +141,9 @@ const handleParkingAvailabilityWthoutNone = computed(() =>
               class="me-2"
             >
               <button
-                class="inline-block p-4 text-blue-600 dark:hover:text-white rounded-t-lg dark:text-blue-500 hover:bg-gray-200 dark:hover:bg-blue-600"
+                class="inline-block p-4 rounded-t hover:bg-blue-600/30 text-blue-600 dark:text-white"
                 :class="{
-                  'bg-gray-100 dark:text-white dark:bg-blue-500/30':
+                  'bg-blue-600 hover:bg-blue-600 text-white':
                     parkingAvailabilityTab === item.id,
                 }"
                 @click.prevent.stop="

@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
-const colors = require("tailwindcss/colors");
+import colors from "tailwindcss/colors";
+import flowbite from "flowbite/plugin";
 
 export default {
   content: [
@@ -25,6 +26,8 @@ export default {
       },
     },
     screens: {
+      0: "0px",
+      xs: "595px",
       sm: "640px",
       md: "768px",
       lg: "1024px",
@@ -32,6 +35,6 @@ export default {
       "2xl": "1536px",
     },
   },
-  plugins: [require("flowbite/plugin")],
+  plugins: [flowbite],
   darkMode: "class",
 };
