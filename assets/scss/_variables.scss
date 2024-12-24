@@ -2,13 +2,13 @@
   --sidebar-width: 260px;
 }
 
-@media only screen and (max-width: theme("screens.xl")) {
+@media only screen and (min-width: theme("screens.sm")) {
   :root {
     --sidebar-width: 80px;
   }
 }
 
-@media only screen and (max-width: theme("screens.sm")) {
+@media only screen and (min-width: theme("screens.xl")) {
   :root {
     --sidebar-width: 260px;
   }

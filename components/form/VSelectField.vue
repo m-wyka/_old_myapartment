@@ -21,7 +21,7 @@ const props = defineProps<{
 }>();
 
 const emit = defineEmits<{
-  (e: "update", value: any): void;
+  (e: "update", value: VSelectFieldData[] | null): void;
 }>();
 
 const selectElement = ref<HTMLDivElement | null>(null);
@@ -194,11 +194,11 @@ const handleSelectValue = computed<string>(() => {
 
     <div
       ref="selectElement"
-      class="block w-full min-h-[42px] p-2.5 pr-10 relative bg-gray-50 border text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 cursor-pointer"
+      class="block w-full min-h-[42px] p-2.5 pr-10 relative bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-zinc-800 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 cursor-pointer"
       :class="[
         selectMenuToggle
           ? 'ring-1 ring-blue-500 border-blue-500'
-          : 'border-gray-300 dark:border-gray-600',
+          : 'border-gray-300 dark:border-zinc-700',
       ]"
       @click="toggleDropdown"
     >
@@ -226,33 +226,32 @@ const handleSelectValue = computed<string>(() => {
     <div
       v-if="selectMenuToggle"
       ref="selectDropdownMenu"
-      class="dropdown w-full absolute mt-[2px] z-10 bg-white divide-y divide-gray-100 rounded dark:bg-gray-700 border border-gray-300 dark:border-gray-600"
+      class="dropdown w-full absolute mt-[2px] z-10 bg-white divide-y divide-gray-100 rounded-xl overflow-hidden dark:bg-zinc-800 border border-gray-300 dark:border-zinc-700"
       :class="selectDropdownDirection"
     >
       <ul
-        class="dropdown__list py-2 text-sm text-gray-700 dark:text-gray-200 overflow-auto"
+        class="dropdown__list p-1 text-sm text-gray-700 dark:text-gray-200 overflow-auto"
       >
         <li v-for="item in options" :key="item.id">
-          <template v-if="multiple">
-            <div
-              class="flex items-center ps-3 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white cursor-pointer"
-              @click.prevent.stop="handleSelectItem(item)"
-            >
-              <input
-                :id="item.id"
-                type="checkbox"
-                :checked="handleMultipleItemChecked(item.id)"
-                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500 pointer-events-none"
-              />
-              <label :for="item.id" class="w-full px-4 py-2 cursor-pointer">
-                {{ item.name }}
-              </label>
-            </div>
-          </template>
+          <div
+            v-if="multiple"
+            class="flex items-center ps-3 rounded-lg hover:bg-gray-100 dark:hover:bg-blue-500 dark:hover:text-white cursor-pointer"
+            @click.prevent.stop="handleSelectItem(item)"
+          >
+            <input
+              :id="item.id"
+              type="checkbox"
+              :checked="handleMultipleItemChecked(item.id)"
+              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-600 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-zinc-800 dark:border-zinc-700 pointer-events-none"
+            />
+            <label :for="item.id" class="w-full px-4 py-2 cursor-pointer">
+              {{ item.name }}
+            </label>
+          </div>
 
           <div
             v-else
-            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white cursor-pointer"
+            class="block px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-blue-500 dark:hover:text-white cursor-pointer"
             @click.prevent.stop="handleSelectItem(item)"
           >
             {{ item.name }}
@@ -286,18 +285,18 @@ const handleSelectValue = computed<string>(() => {
 
   /* Track */
   &::-webkit-scrollbar-track {
-    background: theme("colors.gray.800");
+    background: theme("colors.zinc.900");
   }
 
   /* Handle */
   &::-webkit-scrollbar-thumb {
-    background: theme("colors.gray.500");
+    background: theme("colors.zinc.600");
     border-radius: 8px;
   }
 
   /* Handle on hover */
   &::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: theme("colors.zinc.500");
   }
 }
 </style>

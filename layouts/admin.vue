@@ -4,23 +4,30 @@ import Navbar from "~/components/admin/navbar/Navbar.vue";
 import Sidebar from "~/components/admin/sidebar/Sidebar.vue";
 
 const { smAndDown } = useBreakpoints();
+const navbar = ref<HTMLElement | null>(null);
 const sidebar = ref<HTMLElement | null>(null);
 const sidebarControl = ref(false);
 provide("sidebarControl", sidebarControl);
 
-onClickOutside(sidebar, () => {
-  if (sidebarControl.value) {
-    sidebarControl.value = false;
+onClickOutside(
+  sidebar,
+  () => {
+    if (sidebarControl.value) {
+      sidebarControl.value = false;
+    }
+  },
+  {
+    ignore: [navbar],
   }
-});
+);
 </script>
 
 <template>
   <div>
-    <Navbar v-if="smAndDown" />
+    <Navbar ref="navbar" v-if="smAndDown" />
     <Sidebar ref="sidebar" />
 
-    <main class="wrapper flex">
+    <main class="bg-xd wrapper flex">
       <div class="flex-1 p-4">
         <slot />
       </div>

@@ -38,6 +38,7 @@ export default defineNuxtConfig({
           api: "modern", // For remove warning: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
           additionalData: `
             @use "@/assets/scss/_variables.scss" as *;
+            @use "@/assets/scss/_headings.scss" as *;
             @use "@/assets/scss/components/index.scss" as *;
           `,
         },

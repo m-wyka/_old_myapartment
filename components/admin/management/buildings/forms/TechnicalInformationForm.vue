@@ -44,39 +44,35 @@ const heatingSystemOptions = ref([
 
 <template>
   <form @submit.prevent="onSubmit">
-    <h2 class="mb-4 text-2xl font-semibold dark:text-white">
-      {{ $t("admin.buildingManagement.form.technicalInformation") }}
-    </h2>
-
-    <div class="grid gap-4 mb-8 md:grid-cols-2">
+    <div class="grid gap-4 mb-8">
       <VInputField
         type="number"
         name="surface"
-        :label="$t('admin.buildingManagement.form.surface')"
+        :label="$t('admin.buildingsManagement.form.surface')"
       />
 
       <VInputField
         type="number"
         name="numberOfApartments"
-        :label="$t('admin.buildingManagement.form.numberOfApartments')"
+        :label="$t('admin.buildingsManagement.form.numberOfApartments')"
       />
 
       <VInputField
         type="number"
         name="numberOfElevators"
-        :label="$t('admin.buildingManagement.form.numberOfElevators')"
+        :label="$t('admin.buildingsManagement.form.numberOfElevators')"
       />
 
       <VSelectField
         :options="heatingSystemOptions"
         name="heatingSystem"
-        :label="$t('admin.buildingManagement.form.heatingSystem')"
+        :label="$t('admin.buildingsManagement.form.heatingSystem')"
       />
 
       <VSelectField
         :options="utilitiesAvailableOptions"
         name="utilitiesAvailable"
-        :label="$t('admin.buildingManagement.form.utilitiesAvailable')"
+        :label="$t('admin.buildingsManagement.form.utilitiesAvailable')"
         multiple
       />
     </div>

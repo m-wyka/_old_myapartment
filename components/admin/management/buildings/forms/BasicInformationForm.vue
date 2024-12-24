@@ -6,6 +6,10 @@ import VInputField from "~/components/form/VInputField.vue";
 import VSelectField from "~/components/form/VSelectField.vue";
 import VDatepicker from "~/components/form/VDatepicker.vue";
 
+const props = defineProps<{
+  initialValues?: any;
+}>();
+
 const {
   basicStringSchema,
   numberRequired,
@@ -21,6 +25,7 @@ const { handleSubmit } = useForm({
     numberOfFloors: numberRequiredNullableSchema,
     buildingType: arrayRequiredSchema,
   }),
+  initialValues: props.initialValues,
 });
 
 const onSubmit = handleSubmit(async (values) => {
@@ -40,39 +45,40 @@ const options = ref([
 
 <template>
   <form @submit.prevent="onSubmit">
-    <h2 class="mb-4 text-2xl font-semibold dark:text-white">
-      {{ $t("admin.buildingManagement.form.basicInformation") }}
-    </h2>
-
-    <div class="grid gap-4 mb-8 md:grid-cols-2">
+    <div class="grid gap-4 mb-8">
       <VInputField
+        id="name"
         name="name"
-        :label="$t('admin.buildingManagement.form.name')"
+        :label="$t('admin.buildingsManagement.form.name')"
       />
 
       <VInputField
+        id="address"
         name="address"
-        :label="$t('admin.buildingManagement.form.address')"
-        :placeholder="$t('admin.buildingManagement.form.addressPlaceholder')"
+        :label="$t('admin.buildingsManagement.form.address')"
+        :placeholder="$t('admin.buildingsManagement.form.addressPlaceholder')"
       />
 
       <VDatepicker
-        year-picker
+        id="yearOfConstruction"
         name="yearOfConstruction"
-        :label="$t('admin.buildingManagement.form.yearOfConstruction')"
+        :label="$t('admin.buildingsManagement.form.yearOfConstruction')"
         :max-date="yearOfConstructionMaxDate"
+        year-picker
       />
 
       <VInputField
+        id="numberOfFloors"
         type="number"
         name="numberOfFloors"
-        :label="$t('admin.buildingManagement.form.numberOfFloors')"
+        :label="$t('admin.buildingsManagement.form.numberOfFloors')"
       />
 
       <VSelectField
+        id="buildingType"
         :options="options"
         name="buildingType"
-        :label="$t('admin.buildingManagement.form.buildingType')"
+        :label="$t('admin.buildingsManagement.form.buildingType')"
       />
     </div>
 

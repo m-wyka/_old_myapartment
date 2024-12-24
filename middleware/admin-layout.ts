@@ -5,14 +5,6 @@ export default defineNuxtRouteMiddleware((to) => {
   const authStore = useAuthStore();
   const { isAuth } = storeToRefs(authStore);
 
-  if (to.path.startsWith("/admin")) {
-    useHead({
-      bodyAttrs: {
-        class: "bg-white dark:bg-gray-900 dark:text-white",
-      },
-    });
-  }
-
   if (isAuth.value) {
     if (!to.path.startsWith("/admin")) {
       return navigateTo("/admin");

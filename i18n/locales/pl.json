@@ -2,19 +2,24 @@
   "misc": {
     "yes": "Tak",
     "no": "Nie",
-    "none": "Brak"
+    "none": "Brak",
+    "delete": "Usuń",
+    "edit": "Edytuj",
+    "back": "Wróć"
   },
   "auth": {
     "signOut": "Wyloguj się"
   },
   "admin": {
     "menu": {
-      "buildingManagement": "Zarządzanie budynkiem",
+      "buildingsManagement": "Zarządzanie budynkami",
       "floorManagement": "Zarządzanie piętrami",
       "apartmentManagement": "Zarządzanie mieszkaniami",
       "filesManagement": "Zarządzanie plikami"
     },
-    "buildingManagement": {
+    "buildingsManagement": {
+      "addBuilding": "Dodaj budynek",
+      "editing": "Edytujesz",
       "form": {
         "basicInformation": "Informacje podstawowe",
         "technicalInformation": "Informacje techniczne",
@@ -34,11 +39,7 @@
         "utilitiesAvailable": "Media dostępne w budynku",
         "heatingSystem": "System ogrzewania",
         "buildingOwner": "Właściciel budynku",
-        "buildingOwnerEmail": "Adres e-mail właściciela",
-        "buildingOwnerPhone": "Numer telefonu właściciela",
         "buildingAdministrator": "Administrator budynku",
-        "buildingAdministratorEmail": "Adres e-mail właściciela",
-        "buildingAdministratorPhone": "Numer telefonu właściciela",
         "contactDetails": "Dane kontaktowe",
         "parkingAvailability": "Dostępność parkingów",
         "parkingAvailabilityData": {
@@ -63,6 +64,7 @@
     "save": "Zapisz",
     "cancel": "Anuluj",
     "fields": {
+      "name": "Nazwa",
       "email": "Adres e-mail",
       "password": "Hasło",
       "phone": "Numer telefonu"
@@ -74,5 +76,12 @@
       "min": "Minimalna ilość znaków to: {value}",
       "max": "Maksymalna ilość znaków to: {value}"
     }
+  },
+  "datatable": {
+    "id": "ID",
+    "name": "Nazwa",
+    "address": "Adres",
+    "yearOfConstruction": "Rok budowy",
+    "numberOfFloors": "Liczba pięter"
   }
 }

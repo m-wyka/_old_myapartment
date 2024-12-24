@@ -1,26 +1,17 @@
 <script lang="ts" setup>
-import { object, string } from "yup";
 import { useForm } from "vee-validate";
 import Btn from "~/components/Btn.vue";
 import VSelectField from "~/components/form/VSelectField.vue";
 import VTextarea from "~/components/form/VTextarea.vue";
 
 const { t } = useI18n();
-const { arrayRequiredSchema } = validationSchemas();
-
-const { handleSubmit } = useForm({
-  validationSchema: object({
-    buildingHistory: string(),
-    utilitiesAvailable: arrayRequiredSchema,
-    heatingSystem: arrayRequiredSchema,
-  }),
-});
+const { handleSubmit } = useForm();
 
 const onSubmit = handleSubmit(async (values) => {
   console.log(values);
 });
 
-const utilitiesAvailableOptions = ref([
+const energyCertificatesOptions = ref([
   { id: 1, name: "A+++", value: "a+++" },
   { id: 2, name: "A++", value: "a++" },
   { id: 3, name: "A+", value: "a+" },
@@ -38,28 +29,25 @@ const monitoringAndSecurityOptions = ref([
 
 <template>
   <form @submit.prevent="onSubmit">
-    <h2 class="mb-4 text-2xl font-semibold dark:text-white">
-      {{ $t("admin.buildingManagement.form.technicalInformation") }}
-    </h2>
-
     <div class="grid gap-4 mb-8 md:grid-cols-2">
       <VTextarea
         name="buildingHistory"
-        :label="$t('admin.buildingManagement.form.buildingHistory')"
+        :label="$t('admin.buildingsManagement.form.buildingHistory')"
         class="col-span-2"
       />
 
       <VSelectField
-        :options="utilitiesAvailableOptions"
-        name="utilitiesAvailable"
-        :label="$t('admin.buildingManagement.form.energyCertificates')"
+        :options="energyCertificatesOptions"
+        name="energyCertificates"
+        :label="$t('admin.buildingsManagement.form.energyCertificates')"
+        multiple
       />
 
       <VSelectField
         ref="target"
         :options="monitoringAndSecurityOptions"
-        name="heatingSystem"
-        :label="$t('admin.buildingManagement.form.monitoringAndSecurity')"
+        name="monitoringAndSecurity"
+        :label="$t('admin.buildingsManagement.form.monitoringAndSecurity')"
       />
     </div>
 

@@ -24,50 +24,47 @@ const onSubmit = handleSubmit(async (values) => {
 
 <template>
   <form @submit.prevent="onSubmit">
-    <h2 class="mb-4 text-2xl font-semibold dark:text-white">
-      {{ $t("admin.buildingManagement.form.administrativeInformation") }}
-    </h2>
-
     <div class="grid gap-4 mb-8 md:grid-cols-2">
       <div class="grid gap-4">
-        <VInputField
-          name="buildingOwner"
-          :label="$t('admin.buildingManagement.form.buildingOwner')"
-        />
+        <h6 class="mb-0">
+          {{ $t("admin.buildingsManagement.form.buildingOwner") }}
+        </h6>
+
+        <VInputField name="buildingOwner" :label="$t('form.fields.name')" />
 
         <VInputField
           type="email"
           name="buildingOwnerEmail"
-          :label="$t('admin.buildingManagement.form.buildingOwnerEmail')"
+          :label="$t('form.fields.email')"
         />
 
         <VInputField
           type="tel"
           name="buildingOwnerPhone"
-          :label="$t('admin.buildingManagement.form.buildingOwnerPhone')"
+          :label="$t('form.fields.phone')"
         />
       </div>
 
       <div class="grid gap-4">
+        <h6 class="mb-0">
+          {{ $t("admin.buildingsManagement.form.buildingAdministrator") }}
+        </h6>
+
         <VInputField
           name="buildingAdministrator"
-          :label="$t('admin.buildingManagement.form.buildingAdministrator')"
+          :label="$t('form.fields.name')"
         />
 
         <VInputField
           type="email"
           name="buildingAdministratorEmail"
-          :label="
-            $t('admin.buildingManagement.form.buildingAdministratorEmail')
-          "
+          :label="$t('form.fields.email')"
         />
 
         <VInputField
           type="tel"
           name="buildingAdministratorPhone"
-          :label="
-            $t('admin.buildingManagement.form.buildingAdministratorPhone')
-          "
+          :label="$t('form.fields.phone')"
         />
       </div>
     </div>

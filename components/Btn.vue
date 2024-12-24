@@ -21,7 +21,7 @@ const handleSize = computed(() => {
 
 <template>
   <button
-    class="btn w-full sm:w-auto rounded font-medium text-center select-none"
+    class="btn w-full sm:w-auto font-medium text-center select-none"
     :class="[
       handleSize,
       variant ? `btn__variant--${variant}` : 'btn__variant--default',

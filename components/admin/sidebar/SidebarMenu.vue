@@ -15,7 +15,7 @@ defineProps<{
     >
       <NuxtLink
         :to="item.to ?? undefined"
-        class="sidebar-menu__link flex items-center sm:justify-center xl:justify-start gap-2 sm:size-12 xl:size-full p-2 rounded hover:bg-gray-300 dark:hover:bg-gray-700 text-sm"
+        class="sidebar-menu__link flex items-center sm:justify-center xl:justify-start gap-2 w-full sm:size-12 xl:size-full p-2 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-700 text-sm"
         :class="{ 'cursor-pointer': item.action && !item.to }"
         @click.native="item.action && !item.to ? item.action() : undefined"
       >
@@ -31,27 +31,27 @@ defineProps<{
   @apply text-gray-900 dark:text-white;
 
   &:hover {
-    @apply bg-blue-700 text-white;
+    @apply bg-white/60 dark:bg-white/10 dark:text-white;
   }
 
   &:focus {
-    @apply bg-blue-800 text-white;
+    @apply bg-white/80 dark:bg-white/15 dark:text-white;
   }
 
   &.router-link-active,
   &.router-link-exact-active {
-    @apply bg-blue-600 text-white;
+    @apply bg-white/70 dark:bg-white/10 dark:text-white;
 
     &:hover {
-      @apply bg-blue-700 text-white;
+      @apply bg-white/80 dark:bg-white/10 dark:text-white;
     }
 
     &:focus {
-      @apply bg-blue-800 text-white;
+      @apply bg-white/90 dark:bg-white/15 dark:text-white;
     }
 
     &:focus:not(:hover) {
-      @apply bg-blue-700 text-white;
+      @apply bg-white dark:bg-white/10 dark:text-white;
     }
   }
 }

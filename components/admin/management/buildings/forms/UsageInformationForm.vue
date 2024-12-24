@@ -14,13 +14,13 @@ const parkingAvailabilityOptions = ref([
   {
     id: 1,
     name: t(
-      "admin.buildingManagement.form.parkingAvailabilityData.underground"
+      "admin.buildingsManagement.form.parkingAvailabilityData.underground"
     ),
     value: ParkingAvailabilityValues.Underground,
   },
   {
     id: 2,
-    name: t("admin.buildingManagement.form.parkingAvailabilityData.outside"),
+    name: t("admin.buildingsManagement.form.parkingAvailabilityData.outside"),
     value: ParkingAvailabilityValues.Outside,
   },
   {
@@ -95,15 +95,11 @@ const handleParkingAvailabilityWthoutNone = computed(() =>
 
 <template>
   <form @submit.prevent="onSubmit">
-    <h2 class="mb-4 text-2xl font-semibold dark:text-white">
-      {{ $t("admin.buildingManagement.form.usageInformation") }}
-    </h2>
-
-    <div class="grid gap-4 mb-8 md:grid-cols-2">
+    <div class="grid gap-4 mb-8">
       <div class="grid gap-4 content-start">
         <VInputField
           name="recreationArea"
-          :label="$t('admin.buildingManagement.form.recreationArea')"
+          :label="$t('admin.buildingsManagement.form.recreationArea')"
         />
 
         <VSelectField
@@ -111,7 +107,7 @@ const handleParkingAvailabilityWthoutNone = computed(() =>
           :options="options"
           :label="
             $t(
-              'admin.buildingManagement.form.accessibilityForPeopleWithDisabilities'
+              'admin.buildingsManagement.form.accessibilityForPeopleWithDisabilities'
             )
           "
         />
@@ -121,7 +117,7 @@ const handleParkingAvailabilityWthoutNone = computed(() =>
         <VSelectField
           name="parkingAvailability"
           :options="parkingAvailabilityOptions"
-          :label="$t('admin.buildingManagement.form.parkingAvailability')"
+          :label="$t('admin.buildingsManagement.form.parkingAvailability')"
           multiple
           @update="handleParkingAvailabilityUpdate"
         />
@@ -133,7 +129,7 @@ const handleParkingAvailabilityWthoutNone = computed(() =>
           "
         >
           <ul
-            class="flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400"
+            class="flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:border-zinc-700 dark:text-gray-400"
           >
             <li
               v-for="item in handleParkingAvailabilityWthoutNone"
@@ -141,7 +137,7 @@ const handleParkingAvailabilityWthoutNone = computed(() =>
               class="me-2"
             >
               <button
-                class="inline-block p-4 rounded-t hover:bg-blue-600/30 text-blue-600 dark:text-white"
+                class="inline-block p-4 rounded-t-lg hover:bg-blue-600/60 text-blue-600 dark:text-white"
                 :class="{
                   'bg-blue-600 hover:bg-blue-600 text-white':
                     parkingAvailabilityTab === item.id,
@@ -162,13 +158,15 @@ const handleParkingAvailabilityWthoutNone = computed(() =>
             <VInputField
               type="number"
               name="numberOfParkingLots_1"
-              :label="$t('admin.buildingManagement.form.numberOfParkingLots')"
+              :label="$t('admin.buildingsManagement.form.numberOfParkingLots')"
             />
 
             <VInputField
               type="number"
               name="numberOfParkingSpaces_1"
-              :label="$t('admin.buildingManagement.form.numberOfParkingSpaces')"
+              :label="
+                $t('admin.buildingsManagement.form.numberOfParkingSpaces')
+              "
             />
           </div>
 
@@ -179,13 +177,15 @@ const handleParkingAvailabilityWthoutNone = computed(() =>
             <VInputField
               type="number"
               name="numberOfParkingLots_2"
-              :label="$t('admin.buildingManagement.form.numberOfParkingLots')"
+              :label="$t('admin.buildingsManagement.form.numberOfParkingLots')"
             />
 
             <VInputField
               type="number"
               name="numberOfParkingSpaces_2"
-              :label="$t('admin.buildingManagement.form.numberOfParkingSpaces')"
+              :label="
+                $t('admin.buildingsManagement.form.numberOfParkingSpaces')
+              "
             />
           </div>
         </template>
