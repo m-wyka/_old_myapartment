@@ -50,7 +50,7 @@ const bottomMenu = ref<MenuItem[]>([
     aria-label="Sidebar"
   >
     <div
-      class="flex flex-col justify-between h-full px-4 py-4 overflow-y-auto bg-zinc-200 dark:bg-zinc-950 border-r border-gray-200 dark:border-transparent"
+      class="flex flex-col justify-between h-full px-4 py-4 overflow-y-auto bg-zinc-200 dark:bg-zinc-950"
     >
       <div>
         <Logo />

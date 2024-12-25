@@ -1,38 +1,22 @@
 <script lang="ts" setup>
 import Btn from "~/components/Btn.vue";
 import Datatable from "../../Datatable.vue";
-
-const data = [
-  {
-    id: 1,
-    name: "Skyline Residence",
-    address: "ul. Wysoka 15, 02-123 Warszawa",
-    yearOfConstruction: "1990",
-    numberOfFloors: 16,
-  },
-  {
-    id: 2,
-    name: "Osiedle Zielona Dolina",
-    address: "ul. Leśna 8, 31-456 Kraków",
-    yearOfConstruction: "2020",
-    numberOfFloors: 6,
-  },
-  {
-    id: 3,
-    name: "Modern Tower Apartments",
-    address: "ul. Nowoczesna 22, 50-500 Wrocław",
-    yearOfConstruction: "2006",
-    numberOfFloors: 10,
-  },
-];
+import { buildings } from "~/data/buildings";
 
 const handleDeleteBuilding = async (id: number) => {
   console.log(`Delete building: ${id}`);
 };
+
+const handleBuildingsData = computed(() => {
+  return buildings.map((item) => {
+    const { image, ...rest } = item;
+    return rest;
+  });
+});
 </script>
 
 <template>
-  <Datatable :data="data">
+  <Datatable :data="handleBuildingsData" condensed>
     <template #actions="{ row }">
       <div class="flex justify-end gap-2">
         <Btn

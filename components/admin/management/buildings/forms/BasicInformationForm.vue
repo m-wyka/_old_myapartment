@@ -20,7 +20,7 @@ const {
 const { handleSubmit } = useForm({
   validationSchema: object({
     name: basicStringSchema,
-    address: basicStringSchema,
+    buildingAddress: basicStringSchema,
     yearOfConstruction: numberRequired,
     numberOfFloors: numberRequiredNullableSchema,
     buildingType: arrayRequiredSchema,
@@ -49,14 +49,14 @@ const options = ref([
       <VInputField
         id="name"
         name="name"
-        :label="$t('admin.buildingsManagement.form.name')"
+        :label="$t('admin.buildingsManagement.form.buildingName')"
       />
 
       <VInputField
         id="address"
         name="address"
-        :label="$t('admin.buildingsManagement.form.address')"
-        :placeholder="$t('admin.buildingsManagement.form.addressPlaceholder')"
+        :label="$t('form.fields.address')"
+        :placeholder="$t('form.fields.addressPlaceholder')"
       />
 
       <VDatepicker

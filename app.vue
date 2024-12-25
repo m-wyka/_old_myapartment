@@ -1,12 +1,4 @@
-<script lang="ts" setup>
-import { useFlowbite } from "~/composables/useFlowbite";
-
-onMounted(() => {
-  useFlowbite(({ initFlowbite }) => {
-    initFlowbite();
-  });
-});
-</script>
+<script lang="ts" setup></script>
 
 <template>
   <NuxtLayout>

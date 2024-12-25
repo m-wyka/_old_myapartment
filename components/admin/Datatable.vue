@@ -1,7 +1,9 @@
 <script lang="ts" setup>
 const props = defineProps<{
   data: any;
+  heading?: any;
   showId?: boolean;
+  condensed?: boolean;
 }>();
 
 const slots = useSlots();
@@ -26,6 +28,8 @@ const visibleData = computed(() =>
     return row;
   })
 );
+
+const conden = computed(() => (props.condensed ? "px-4 py-2" : "p-4"));
 </script>
 
 <template>
@@ -35,14 +39,29 @@ const visibleData = computed(() =>
         class="border-b border-zinc-200 dark:border-zinc-800 text-gray-700 uppercase dark:text-zinc-400 font-medium"
       >
         <tr>
-          <th
-            v-for="(item, index) in handleHeaderDependingOnId"
-            :key="index"
-            scope="col"
-            class="p-4 first:pl-1 last:pr-1"
-          >
-            {{ $t(`datatable.${item}`) }}
-          </th>
+          <template v-if="heading">
+            <th
+              v-for="(item, index) in heading"
+              :key="index"
+              scope="col"
+              class="first:pl-1 last:pr-1"
+              :class="conden"
+            >
+              {{ $t(`datatable.${item}`) }}
+            </th>
+          </template>
+
+          <template v-else>
+            <th
+              v-for="(item, index) in handleHeaderDependingOnId"
+              :key="index"
+              scope="col"
+              class="first:pl-1 last:pr-1"
+              :class="conden"
+            >
+              {{ $t(`datatable.${item}`) }}
+            </th>
+          </template>
 
           <th v-if="slots.actions"></th>
         </tr>
@@ -56,13 +75,13 @@ const visibleData = computed(() =>
         >
           <td
             v-for="(cell, key) in visibleData[index]"
-            class="px-4 py-2 first:pl-1 whitespace-nowrap text-gray-900 dark:text-white"
-            :class="{ 'last:pr-1': slots.actions }"
+            class="first:pl-1 whitespace-nowrap text-gray-900 dark:text-white"
+            :class="[conden, { 'last:pr-1': slots.actions }]"
           >
             {{ cell }}
           </td>
 
-          <td v-if="slots.actions" class="px-4 py-2 last:pr-1">
+          <td v-if="slots.actions" class="last:pr-1" :class="conden">
             <slot name="actions" :row="row" />
           </td>
         </tr>

@@ -5,7 +5,8 @@
     "none": "Brak",
     "delete": "Usuń",
     "edit": "Edytuj",
-    "back": "Wróć"
+    "back": "Wróć",
+    "close": "Zamknij"
   },
   "auth": {
     "signOut": "Wyloguj się"
@@ -20,6 +21,7 @@
     "buildingsManagement": {
       "addBuilding": "Dodaj budynek",
       "editing": "Edytujesz",
+
       "form": {
         "basicInformation": "Informacje podstawowe",
         "technicalInformation": "Informacje techniczne",
@@ -27,9 +29,7 @@
         "usageInformation": "Informacje użytkowe",
         "documentationAndFiles": "Dokumentacja i pliki",
         "additionalInformation": "Informacje dodatkowe",
-        "name": "Nazwa budynku",
-        "address": "Adres",
-        "addressPlaceholder": "np. plac Defilad 1, 00-901 Warszawa",
+        "buildingName": "Nazwa budynku",
         "yearOfConstruction": "Rok budowy",
         "numberOfFloors": "Liczba pięter",
         "buildingType": "Typ budynku",
@@ -57,6 +57,11 @@
         "energyCertificates": "Certyfikaty energetyczne",
         "monitoringAndSecurity": "Monitoring i bezpieczeństwo"
       }
+    },
+    "floorsManagement": {
+      "manageFloors": "Zarządzaj piętrami",
+      "floor": "Piętro",
+      "addingFloor": "Dodawanie piętra"
     }
   },
   "form": {
@@ -67,7 +72,9 @@
       "name": "Nazwa",
       "email": "Adres e-mail",
       "password": "Hasło",
-      "phone": "Numer telefonu"
+      "phone": "Numer telefonu",
+      "address": "Adres",
+      "addressPlaceholder": "np. plac Defilad 1, 00-901 Warszawa"
     },
     "validation": {
       "required": "To pole jest wymagane",
@@ -82,6 +89,11 @@
     "name": "Nazwa",
     "address": "Adres",
     "yearOfConstruction": "Rok budowy",
-    "numberOfFloors": "Liczba pięter"
+    "numberOfFloors": "Liczba pięter",
+    "floor": "Piętro",
+    "numberOfApartments": "Liczba mieszkań",
+    "surface": "Powierzchnia całkowita (m2)",
+    "purpose": "Przeznacznie",
+    "elevatorAvailability": "Winda"
   }
 }
